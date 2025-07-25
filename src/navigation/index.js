@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-// Sadece SplashScreen import ediliyor
 import SplashScreen from '../screens/splash-screen/index';
 
 const Stack = createNativeStackNavigator();
