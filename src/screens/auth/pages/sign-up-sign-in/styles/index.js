@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   loginText: {
     color: '#A1A4B2',
     fontSize: 14,
-    marginTop: 0,
+    marginBottom: 20,
   },
   loginLink: {
     color: '#8E97FD',

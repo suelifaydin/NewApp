@@ -11,9 +11,12 @@ import { useFocusEffect } from '@react-navigation/native';
 import lightStyles from './styles/light/index';
 import darkStyles from './styles/dark/index';
 import { getTheme } from '../../utils/theme/theme'; 
+import { useTranslation } from 'react-i18next';
 
 const PickScreen = () => {
 const [theme, setTheme] = useState('light');
+const { t } = useTranslation();
+
 
   useFocusEffect(
     useCallback(() => {
@@ -40,16 +43,16 @@ const [theme, setTheme] = useState('light');
       key={theme}
       resizeMode="cover"
     >
-      <View style={styles.header}>
-        <Text style={styles.title}>What Brings you</Text>
-        <Text style={styles.subtitle}>to Silent Moon?</Text>
-        <Text style={styles.caption}>choose a topic to focus on:</Text>
-      </View>
+       <View style={styles.header}>
+    <Text style={styles.title}>{t('pickTitle1')}</Text>
+    <Text style={styles.subtitle}>{t('pickTitle2')}</Text>
+    <Text style={styles.caption}>{t('pickSubtitle')}</Text>
+  </View>
 
       <ScrollView contentContainerStyle={styles.cards}>
         <View style={styles.row}>
           <Image
-            source={require('../../assets/pick-screen/stress.png')}
+            source={require('../../assets/pick-screen/anxiety.png')}
             style={[styles.image, { height: 190 }]}
           />
           <Image
@@ -60,7 +63,7 @@ const [theme, setTheme] = useState('light');
 
         <View style={styles.row}>
           <Image
-            source={require('../../assets/pick-screen/happiness.png')}
+            source={require('../../assets/pick-screen/sleep3.png')}
             style={[styles.image, { height: 160 }]}
           />
           <Image

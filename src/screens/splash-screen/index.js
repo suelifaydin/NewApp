@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ImageBackground, View, Image, Text } from 'react-native';
+import { ImageBackground, View, Image, Text, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
@@ -34,6 +34,13 @@ const SplashScreen = () => {
           source={require('../../assets/global/girl.png')}
           style={styles.illustration}
           resizeMode="contain"
+        />
+
+        {/* Yükleniyor göstergesi */}
+        <ActivityIndicator
+          size="large"
+          color="red"
+          style={{ marginTop: 40 }}
         />
       </View>
     </ImageBackground>

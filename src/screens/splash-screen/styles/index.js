@@ -32,5 +32,6 @@ export default StyleSheet.create({
   illustration: {
     width: width * 0.75,
     height: height * 0.45,
+    marginBottom: 360,
   },
 });

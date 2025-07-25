@@ -20,40 +20,40 @@ import { getTheme } from '../../utils/theme/theme';
 import { setupPlayer } from '../../utils/audio/setupPlayer';
 import profileStore from '../../store/profileStore';
 import { observer } from 'mobx-react';
+import { useTranslation } from 'react-i18next';
 
 const tracks = [
   {
     id: 'track1',
-    title: 'Night Island',
-    artist: 'Sleep Music',
+    titleKey: 'nightIsland',
+    artistKey: 'sleepMusic',
     url: require('../../assets/audio/track1.mp3'),
     image: require('../../assets/global/night.png'),
   },
   {
     id: 'track2',
-    title: 'Ocean Wave',
-    artist: 'Calm Sound',
+    titleKey: 'oceanWave',
+    artistKey: 'calmSound',
     url: require('../../assets/audio/track2.mp3'),
     image: require('../../assets/home-screen/night2.png'),
   },
   {
     id: 'track3',
-    title: 'Rain Drops',
-    artist: 'Nature Relax',
+    titleKey: 'rainDrops',
+    artistKey: 'natureRelax',
     url: require('../../assets/audio/track3.mp3'),
     image: require('../../assets/sleep-screen/night3.png'),
   },
   {
     id: 'track4',
-    title: 'Windy Forest',
-    artist: 'Relaxation Station',
+    titleKey: 'windyForest',
+    artistKey: 'relaxationStation',
     url: require('../../assets/audio/track4.mp3'),
     image: require('../../assets/global/night4.png'),
   },
 ];
 
-// 💡 Favori bileşeni MobX ile sarılmış şekilde dışarı aldık
-const TrackItem = observer(({ item, playTrack, toggleFavorite, styles }) => (
+const TrackItem = observer(({ item, playTrack, toggleFavorite, styles, t }) => (
   <View style={styles.trackRow}>
     <TouchableOpacity
       onPress={() => playTrack(item.id)}
@@ -61,8 +61,8 @@ const TrackItem = observer(({ item, playTrack, toggleFavorite, styles }) => (
     >
       <Image source={item.image} style={styles.trackImage} />
       <View style={styles.trackTextContainer}>
-        <Text style={styles.trackTitle}>{item.title}</Text>
-        <Text style={styles.trackArtist}>{item.artist}</Text>
+        <Text style={styles.trackTitle}>{t(item.titleKey)}</Text>
+        <Text style={styles.trackArtist}>{t(item.artistKey)}</Text>
       </View>
     </TouchableOpacity>
 
@@ -85,6 +85,7 @@ const PlayerScreen = () => {
   const [currentTrackId, setCurrentTrackId] = useState('track1');
   const [isPlayerReady, setIsPlayerReady] = useState(false);
 
+  const { t } = useTranslation();
   const playbackState = usePlaybackState();
   const progress = useProgress();
 
@@ -101,10 +102,7 @@ const PlayerScreen = () => {
 
   const playTrack = async (trackId) => {
     try {
-      if (!isPlayerReady) {
-        console.warn('Player hazır değil');
-        return;
-      }
+      if (!isPlayerReady) return;
 
       const track = tracks.find((t) => t.id === trackId);
       if (!track) return;
@@ -142,12 +140,10 @@ const PlayerScreen = () => {
       try {
         await setupPlayer();
         setIsPlayerReady(true);
-        console.log('Player setup tamamlandı');
       } catch (error) {
         console.error('Player kurulumu başarısız:', error);
       }
     };
-
     init();
   }, []);
 
@@ -174,6 +170,8 @@ const PlayerScreen = () => {
     return `${mins < 10 ? '0' + mins : mins}:${secs < 10 ? '0' + secs : secs}`;
   };
 
+  const currentTrack = tracks.find((t) => t.id === currentTrackId);
+
   return (
     <ImageBackground source={backgroundImage} style={styles.container} key={theme}>
       <FlatList
@@ -186,13 +184,14 @@ const PlayerScreen = () => {
             playTrack={playTrack}
             toggleFavorite={toggleFavorite}
             styles={styles}
+            t={t}
           />
         )}
         style={styles.trackList}
       />
 
-      <Text style={styles.title}>{tracks.find(t => t.id === currentTrackId)?.title}</Text>
-      <Text style={styles.subTitle}>SLEEP MUSIC</Text>
+      <Text style={styles.title}>{t(currentTrack?.titleKey)}</Text>
+      <Text style={styles.subTitle}>{t('sleepMusic')}</Text>
 
       <View style={styles.controls}>
         <TouchableOpacity onPress={seekBackward}>

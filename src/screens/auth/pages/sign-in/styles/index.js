@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
   justifyContent: 'center',
   alignItems: 'center',
   marginBottom: 90,
+  marginTop: 90, // Adjusted for better visibility
 },
 backIcon: {
   width: 18,
@@ -54,7 +55,11 @@ backIcon: {
     height: 24,
     marginRight: 12,
   },
- 
+  icon2: {
+    width: 20,
+    height: 20,
+    marginRight: 12,
+  },
   googleText: {
     color: '#3F414E',
     fontWeight: '600',
@@ -64,7 +69,8 @@ backIcon: {
     color: '#A1A4B2',
     fontSize: 12,
     textAlign: 'center',
-    marginVertical: 20,
+    marginVertical: 30,
+    marginBottom: 50,
   },
   input: {
     backgroundColor: '#F2F3F7',
@@ -95,13 +101,29 @@ backIcon: {
   signUpText: {
     textAlign: 'center',
     color: '#A1A4B2',
-    marginTop: 10,
-    marginBottom: 100,
+    marginTop: 140,
   },
   signUpLink: {
     color: '#8E97FD',
     fontWeight: '600',
   },
+  facebookButton: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#8E97FD', // mor arka plan
+  borderRadius: 35,
+  height: 50,
+  marginBottom: 20,
+},
+
+facebookText: {
+  color: '#FFFFFF',
+  fontSize: 14,
+  fontWeight: 'bold',
+  marginLeft: 10,
+},
+
 });
 
 export default styles;

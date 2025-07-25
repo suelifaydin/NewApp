@@ -9,15 +9,18 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 import lightStyles from './styles/light/index.js';
 import darkStyles from './styles/dark/index.js';
-import { getTheme } from '../../utils/theme/theme.js'; 
+import { getTheme } from '../../utils/theme/theme.js';
 
 const HomeScreen = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [userName, setUserName] = useState('');
   const [theme, setTheme] = useState('light');
+
+  const { t } = useTranslation();
 
   const styles = theme === 'light' ? lightStyles : darkStyles;
 
@@ -31,32 +34,32 @@ const HomeScreen = () => {
 
   const sleepCards = [
     {
-      title: 'Night Island',
+      titleKey: 'nightIsland',
       subtitle: '45 MIN · SLEEP MUSIC',
       image: require('../../assets/home-screen/night2.png'),
     },
     {
-      title: 'Sweet Sleep',
+      titleKey: 'sweetSleep',
       subtitle: '45 MIN · SLEEP MUSIC',
       image: require('../../assets/home-screen/night2.png'),
     },
     {
-      title: 'Moon Light',
+      titleKey: 'moonLight',
       subtitle: '60 MIN · SLEEP MUSIC',
       image: require('../../assets/home-screen/night2.png'),
     },
     {
-      title: 'Dreamy Sky',
+      titleKey: 'dreamySky',
       subtitle: '30 MIN · SLEEP MUSIC',
       image: require('../../assets/home-screen/night2.png'),
     },
     {
-      title: 'Night Island',
+      titleKey: 'nightIsland',
       subtitle: '45 MIN · SLEEP MUSIC',
       image: require('../../assets/home-screen/night2.png'),
     },
     {
-      title: 'Sweet Sleep',
+      titleKey: 'sweetSleep',
       subtitle: '45 MIN · SLEEP MUSIC',
       image: require('../../assets/home-screen/night2.png'),
     },
@@ -81,7 +84,7 @@ const HomeScreen = () => {
   useFocusEffect(
     useCallback(() => {
       const loadTheme = async () => {
-        const savedTheme = await getTheme(); 
+        const savedTheme = await getTheme();
         setTheme(savedTheme);
       };
       loadTheme();
@@ -99,9 +102,10 @@ const HomeScreen = () => {
     >
       <View style={styles.greetingContainer}>
         <Text style={styles.greetingText}>
-          Good Night{userName ? `, ${userName}` : ''}
+          {t('homeGreeting')}
+          {userName ? `, ${userName}` : ''}
         </Text>
-        <Text style={styles.greetingSubText}>We wish you have a good night</Text>
+        <Text style={styles.greetingSubText}>{t('homeSubGreeting')}</Text>
       </View>
 
       <ScrollView
@@ -133,7 +137,7 @@ const HomeScreen = () => {
                 activeCategory === item.label && styles.activeCategoryLabel,
               ]}
             >
-              {item.label}
+              {t(item.label.toLowerCase())}
             </Text>
           </TouchableOpacity>
         ))}
@@ -144,11 +148,11 @@ const HomeScreen = () => {
         style={styles.oceanCard}
         imageStyle={{ borderRadius: 20 }}
       >
-        <Text style={styles.oceanTitle}>The Ocean Moon</Text>
-        <Text style={styles.oceanDesc}>Non-stop 8-hour mixes of our</Text>
-        <Text style={styles.oceanDesc2}>most popular sleep audio</Text>
+        <Text style={styles.oceanTitle}>{t('oceanTitle')}</Text>
+        <Text style={styles.oceanDesc}>{t('oceanDesc1')}</Text>
+        <Text style={styles.oceanDesc2}>{t('oceanDesc2')}</Text>
         <TouchableOpacity style={styles.startButton}>
-          <Text style={styles.startText}>START</Text>
+          <Text style={styles.startText}>{t('start')}</Text>
         </TouchableOpacity>
       </ImageBackground>
 
@@ -160,7 +164,7 @@ const HomeScreen = () => {
           {sleepCards.map((item, index) => (
             <TouchableOpacity key={index} style={styles.miniCard}>
               <Image source={item.image} style={styles.miniCardImage} />
-              <Text style={styles.miniCardTitle}>{item.title}</Text>
+              <Text style={styles.miniCardTitle}>{t(item.titleKey)}</Text>
               <Text style={styles.miniCardSubtitle}>{item.subtitle}</Text>
             </TouchableOpacity>
           ))}

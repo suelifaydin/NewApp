@@ -117,7 +117,6 @@ backIcon: {
   alignItems: 'center',
   marginLeft: 131, // text ile arasında boşluk olsun
 },
-
 checkedBox: {
   width: 12,
   height: 12,

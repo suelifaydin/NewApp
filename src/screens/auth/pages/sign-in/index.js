@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Alert,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import styles from './styles';
 import CustomButton from '../../../../components/Buttons/custom-button';
 import Input from '../../../../components/Inputs/index'; 
@@ -17,8 +18,9 @@ import Input from '../../../../components/Inputs/index';
 //   const response = await api.post('/users/sign/in', { email, password });
 // }
 
-
 const LoginScreen = ({ navigation }) => {
+  const { t } = useTranslation();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -40,17 +42,17 @@ const LoginScreen = ({ navigation }) => {
       if (storedUser) {
         const user = JSON.parse(storedUser);
         if (user.email === email && user.password === password) {
-          Alert.alert('Success', 'Login successful!');
+          Alert.alert(t('success'), t('login_successful'));
           navigation.navigate('Home', { screen: 'HomeScreen' });
         } else {
-          Alert.alert('Error', 'Incorrect email or password');
+          Alert.alert(t('error'), t('incorrect_credentials'));
         }
       } else {
-        Alert.alert('Error', 'No user found, please sign up first');
+        Alert.alert(t('error'), t('no_user_found'));
       }
     } catch (error) {
       console.error(error);
-      Alert.alert('Error', 'An error occurred during login');
+      Alert.alert(t('error'), t('login_error'));
     }
   };
 
@@ -65,27 +67,37 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       {/* Başlık */}
-      <Text style={styles.title}>Welcome Back!</Text>
+      <Text style={styles.title}>{t('welcome_back')}</Text>
+
+      {/* Facebook */}
+<TouchableOpacity style={styles.facebookButton}>
+  <Image
+    source={require('../../../../assets/icon/facebook.png')}
+    style={styles.icon2}
+  />
+  <Text style={styles.facebookText}>{t('continue_with_facebook')}</Text>
+</TouchableOpacity>
+
 
       {/* Google */}
       <TouchableOpacity style={styles.googleButton}>
         <Image source={require('../../../../assets/icon/google.png')} style={styles.icon} />
-        <Text style={styles.googleText}>CONTINUE WITH GOOGLE</Text>
+        <Text style={styles.googleText}>{t('continue_with_google')}</Text>
       </TouchableOpacity>
 
       {/* Veya */}
-      <Text style={styles.orText}>OR LOG IN WITH EMAIL</Text>
+      <Text style={styles.orText}>{t('or_login_email')}</Text>
 
       {/* Email */}
       <Input
-        placeholder="Email address"
+        placeholder={t('email')}
         value={email}
         onChangeText={setEmail}
       />
 
       {/* Şifre */}
       <Input
-        placeholder="Password"
+        placeholder={t('password')}
         value={password}
         onChangeText={setPassword}
         secureTextEntry
@@ -93,17 +105,17 @@ const LoginScreen = ({ navigation }) => {
 
       {/* Giriş Butonu */}
       <CustomButton
-        title="LOG IN"
+        title={t('login')}
         onPress={handleLogin}
       />
 
       {/* Şifremi Unuttum */}
-      <Text style={styles.forgotText}>Forgot Password?</Text>
+      <Text style={styles.forgotText}>{t('forgot_password')}</Text>
 
       {/* Kayıt Ol */}
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
         <Text style={styles.signUpText}>
-          ALREADY HAVE AN ACCOUNT? <Text style={styles.signUpLink}>SIGN UP</Text>
+          {t('dont_have_account')} <Text style={styles.signUpLink}>{t('sign_up')}</Text>
         </Text>
       </TouchableOpacity>
     </ImageBackground>

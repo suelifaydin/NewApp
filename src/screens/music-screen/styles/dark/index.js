@@ -85,21 +85,14 @@ export default StyleSheet.create({
   borderWidth: 1,
   borderColor: 'rgba(240, 217, 237, 0.35)',
 },
-  trackTitle: {
-    fontSize: 16,
-    color: '#03174C',
-  },
-  trackTextContainer: {
-  flex: 1,
-},
-
 trackTitle: {
   fontSize: 16,
   fontWeight: 'bold',
+  color: 'white',
 },
-
 trackArtist: {
   fontSize: 14,
+  color: 'white',
 },
 trackImage: {
   width: 50,

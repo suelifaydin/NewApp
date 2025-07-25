@@ -7,11 +7,13 @@ import {
   Image,
   ImageBackground,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import styles from './styles';
-import Input from '../../../../components/Inputs/index';
-// import api from '../../../../api/api';
+import Input from '../../../../components/Inputs';
 
 const SignUp = ({ navigation }) => {
+  const { t } = useTranslation();
+
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -25,30 +27,18 @@ const SignUp = ({ navigation }) => {
 
   const handleSignUp = async () => {
     if (!name || !surname || !email || !password || !isChecked) {
-      alert('Lütfen tüm alanları doldurun ve gizlilik politikasını onaylayın.');
+      alert(t('fill_all_fields_warning'));
       return;
     }
 
     const userData = { name, surname, email, password };
 
     try {
-      // const response = await api.post('/users/sign/up', {
-      //   name,
-      //   surname,
-      //   email,
-      //   password,
-      // });
-
-      // const { token, name: userName, surname: userSurname } = response.data;
-
-      // await AsyncStorage.setItem('userToken', token);
-      // await AsyncStorage.setItem('userName', userName);
-      // await AsyncStorage.setItem('userSurname', userSurname);
       await AsyncStorage.setItem('user', JSON.stringify(userData));
       navigation.navigate('Welcome');
     } catch (error) {
       console.error('Kayıt hatası:', error);
-      alert('Kayıt sırasında bir hata oluştu.');
+      alert(t('signup_error'));
     }
   };
 
@@ -61,43 +51,39 @@ const SignUp = ({ navigation }) => {
         <Image source={require('../../../../assets/icon/vector.png')} style={styles.backIcon} />
       </TouchableOpacity>
 
-      <Text style={styles.title}>Create your account</Text>
+      <Text style={styles.title}>{t('create_account')}</Text>
 
       <TouchableOpacity style={styles.googleButton}>
         <Image source={require('../../../../assets/icon/google.png')} style={styles.icon} />
-        <Text style={styles.googleText}>CONTINUE WITH GOOGLE</Text>
+        <Text style={styles.googleText}>{t('continue_with_google')}</Text>
       </TouchableOpacity>
 
-      <Text style={styles.orText}>OR LOG IN WITH EMAIL</Text>
+      <Text style={styles.orText}>{t('or_login_email')}</Text>
 
-      {/* İsim */}
       <Input
-        placeholder="Name"
+        placeholder={t('name')}
         value={name}
         onChangeText={setName}
         showCheckIcon
       />
 
-      {/* Soyisim */}
       <Input
-        placeholder="Surname"
+        placeholder={t('surname')}
         value={surname}
         onChangeText={setSurname}
         showCheckIcon
         style={{ marginBottom: 10 }}
       />
 
-      {/* Email */}
       <Input
-        placeholder="Email"
+        placeholder={t('email')}
         value={email}
         onChangeText={setEmail}
         showCheckIcon
       />
 
-      {/* Şifre */}
       <Input
-        placeholder="Password"
+        placeholder={t('password')}
         value={password}
         onChangeText={setPassword}
         secureTextEntry
@@ -109,16 +95,15 @@ const SignUp = ({ navigation }) => {
       {/* Gizlilik Politikası */}
       <View style={styles.privacyContainer}>
         <Text style={styles.privacyText}>
-          I have read the <Text style={styles.privacyLink}>Privacy Policy</Text>
+          {t('privacy_prefix')} <Text style={styles.privacyLink}>{t('privacy_policy')}</Text>
         </Text>
         <TouchableOpacity onPress={handleCheckboxToggle} style={styles.checkbox}>
           {isChecked && <View style={styles.checkedBox} />}
         </TouchableOpacity>
       </View>
 
-      {/* Get Started */}
       <TouchableOpacity style={styles.getStartedButton} onPress={handleSignUp}>
-        <Text style={styles.getStartedText}>GET STARTED</Text>
+        <Text style={styles.getStartedText}>{t('get_started')}</Text>
       </TouchableOpacity>
     </ImageBackground>
   );

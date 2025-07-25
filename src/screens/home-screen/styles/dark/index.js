@@ -111,16 +111,17 @@ const darkStyles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 20,
   },
-  miniCard: {
-    width: '40%',
-    marginBottom: 30,
-  },
-  miniCardImage: {
-    width: 130,
-    height: 120,
-    borderRadius: 15,
-    resizeMode: 'cover',
-  },
+ miniCard: {
+  width: '47%',         // %47 ile iki kart tam yan yana
+  marginBottom: 15,     // Alt boşluğu azaltıldı
+},
+miniCardImage: {
+  width: '100%',
+  height: 100,          // Biraz daha kompakt hale getirildi
+  borderRadius: 15,
+  resizeMode: 'cover',
+  marginBottom: 5,
+},
   miniCardTitle: {
     marginTop: 8,
     fontSize: 16,
