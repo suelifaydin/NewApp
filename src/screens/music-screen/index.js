@@ -21,6 +21,7 @@ import { setupPlayer } from '../../utils/audio/setupPlayer';
 import profileStore from '../../store/profileStore';
 import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
+import * as musicStyles from './styles';
 
 const tracks = [
   {
@@ -146,8 +147,7 @@ const PlayerScreen = () => {
     };
     init();
   }, []);
-
-  const styles = theme === 'dark' ? darkStyles : lightStyles;
+  const styles = musicStyles[theme];
   const backgroundImage =
     theme === 'dark'
       ? require('../../assets/global/sleep.png')

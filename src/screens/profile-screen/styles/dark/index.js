@@ -1,10 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#03174C',
-  },
+export default StyleSheet.create({
   scroll: {
     padding: 24,
     paddingTop: 60,
@@ -36,10 +32,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     elevation: 2,
   },
- menuText: {
-  color: '#fff',
-  fontSize: 16,
-},
+  menuText: {
+    color: '#fff',
+    fontSize: 16,
+  },
   logoutButton: {
     backgroundColor: '#FF6B6B',
     paddingVertical: 14,
@@ -52,19 +48,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   languageButton: {
-  backgroundColor: '#222',
-  paddingVertical: 12,
-  paddingHorizontal: 20,
-  marginVertical: 10,
-  borderRadius: 10,
-  alignItems: 'center',
-},
-languageButtonText: {
-  fontSize: 16,
-  color: '#fff',
-  fontWeight: '500',
-},
-
+    backgroundColor: '#222',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    marginVertical: 10,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  languageButtonText: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: '500',
+  },
 });
-
-export default styles;

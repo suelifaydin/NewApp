@@ -9,16 +9,15 @@ import {
 } from 'react-native';
 import { observer } from 'mobx-react';
 import profileStore from '../../store/profileStore';
-import lightStyles from './styles/light/index';
-import darkStyles from './styles/dark/index';
+import * as profileStyles from './styles'; // ✅ sadece bunu ekle
 import LanguageModal from '../../components/LanguageModal';
 import { useTranslation } from 'react-i18next';
+    import { SafeAreaView } from 'react-native'; // en üste ekle
 
 const ProfileScreen = observer(({ navigation }) => {
-  const styles = profileStore.theme === 'dark' ? darkStyles : lightStyles;
+  const styles = profileStore.theme === 'dark' ? profileStyles.dark : profileStyles.light;
   const [languageModalVisible, setLanguageModalVisible] = useState(false);
   const { t, i18n } = useTranslation();
-
   const handleLogout = () => {
     profileStore.logout(navigation);
   };
@@ -47,7 +46,12 @@ const ProfileScreen = observer(({ navigation }) => {
   };
 
   return (
-    <ImageBackground source={backgroundImage} style={styles.container}>
+  <ImageBackground
+    source={backgroundImage}
+    style={{ flex: 1 }} // bu önemli!
+    resizeMode="cover"
+  >
+    <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.scroll}>
         {/* Profil Bilgileri */}
         <View style={styles.profileSection}>
@@ -71,7 +75,6 @@ const ProfileScreen = observer(({ navigation }) => {
             <Text style={styles.menuText}>📝 {t('accountDetails')}</Text>
           </TouchableOpacity>
 
-          {/* 🌐 Seçili dili ve bayrağı gösteren buton */}
           <TouchableOpacity
             style={[styles.menuItem, { flexDirection: 'row', alignItems: 'center' }]}
             onPress={() => setLanguageModalVisible(true)}
@@ -85,7 +88,6 @@ const ProfileScreen = observer(({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        {/* Tema Değiştir Butonu */}
         <TouchableOpacity style={styles.menuItem} onPress={handleToggle}>
           <Text style={styles.menuText}>
             {profileStore.theme === 'dark'
@@ -94,7 +96,6 @@ const ProfileScreen = observer(({ navigation }) => {
           </Text>
         </TouchableOpacity>
 
-        {/* Çıkış */}
         <TouchableOpacity
           style={styles.logoutButton}
           onPress={handleLogout}
@@ -102,14 +103,15 @@ const ProfileScreen = observer(({ navigation }) => {
           <Text style={styles.logoutText}>{t('logout')}</Text>
         </TouchableOpacity>
       </ScrollView>
+    </SafeAreaView>
 
-      {/* 🌐 Language Modal */}
-      <LanguageModal
-        visible={languageModalVisible}
-        onClose={() => setLanguageModalVisible(false)}
-      />
-    </ImageBackground>
-  );
+    <LanguageModal
+      visible={languageModalVisible}
+      onClose={() => setLanguageModalVisible(false)}
+    />
+  </ImageBackground>
+);
+
 });
 
 export default ProfileScreen;

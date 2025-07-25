@@ -7,21 +7,19 @@ import {
   Image,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next'; // ✅ bu satır kalmalı
 
-import lightStyles from './styles/light/index';
-import darkStyles from './styles/dark/index';
-import { getTheme } from '../../utils/theme/theme'; 
-import { useTranslation } from 'react-i18next';
+import * as pickStyles from './styles';
+import { getTheme } from '../../utils/theme/theme';
 
 const PickScreen = () => {
 const [theme, setTheme] = useState('light');
 const { t } = useTranslation();
 
-
   useFocusEffect(
     useCallback(() => {
       const loadTheme = async () => {
-        const savedTheme = await getTheme(); 
+        const savedTheme = await getTheme();
         console.log('Aktif tema:', savedTheme);
         setTheme(savedTheme);
       };
@@ -29,7 +27,7 @@ const { t } = useTranslation();
     }, [])
   );
 
-  const styles = theme === 'dark' ? darkStyles : lightStyles;
+  const styles = pickStyles[theme]; // ✅ styles.dark ya da styles.light
 
   const backgroundImage =
     theme === 'dark'

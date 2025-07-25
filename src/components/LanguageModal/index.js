@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Image,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../local/i18n';
@@ -18,32 +19,37 @@ const LanguageModal = ({ visible, onClose }) => {
   };
 
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="slide"
-    >
+    <Modal visible={visible} transparent animationType="slide">
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <Text style={styles.title}>{t('language')}</Text>
 
-          <TouchableOpacity onPress={() => changeLanguage('en')}>
+          {/* English */}
+          <TouchableOpacity onPress={() => changeLanguage('en')} style={styles.optionRow}>
             <Text style={styles.option}>{t('english')}</Text>
+            <Image source={require('../../assets/icon/flag-en.png')} style={styles.flag} />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => changeLanguage('tr')}>
+          {/* Turkish */}
+          <TouchableOpacity onPress={() => changeLanguage('tr')} style={styles.optionRow}>
             <Text style={styles.option}>{t('turkish')}</Text>
+            <Image source={require('../../assets/icon/flag-tr.png')} style={styles.flag} />
           </TouchableOpacity>
-            
-       <TouchableOpacity onPress={() => changeLanguage('de')}>
-  <Text style={styles.option}>{t('German')}</Text>
-</TouchableOpacity>
 
-        <TouchableOpacity onPress={() => changeLanguage('ru')}>
-        <Text style={styles.option}>{t('Russian')}</Text>
-        </TouchableOpacity>
+          {/* German */}
+          <TouchableOpacity onPress={() => changeLanguage('de')} style={styles.optionRow}>
+            <Text style={styles.option}>{t('german')}</Text>
+            <Image source={require('../../assets/icon/flag-de.png')} style={styles.flag} />
+          </TouchableOpacity>
 
-          <TouchableOpacity onPress={onClose}>
+          {/* Russian */}
+          <TouchableOpacity onPress={() => changeLanguage('ru')} style={styles.optionRow}>
+            <Text style={styles.option}>{t('russian')}</Text>
+            <Image source={require('../../assets/icon/flag-ru.png')} style={styles.flag} />
+          </TouchableOpacity>
+
+          {/* Close */}
+          <TouchableOpacity onPress={onClose} style={{ marginTop: 30 }}>
             <Text style={[styles.option, { color: 'red' }]}>Kapat</Text>
           </TouchableOpacity>
         </View>
@@ -64,17 +70,29 @@ const styles = StyleSheet.create({
   modalContent: {
     backgroundColor: 'white',
     borderRadius: 12,
-    padding: 50,
+    padding: 40,
     width: '85%',
     alignItems: 'center',
   },
   title: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 25,
+  },
+  optionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between', // <-- Bu önemli!
+    alignItems: 'center',
+    width: '100%',
+    marginVertical: 10,
+    paddingHorizontal: 10,
   },
   option: {
     fontSize: 18,
-    marginVertical: 20,
+  },
+  flag: {
+    width: 30,
+    height: 20,
+    resizeMode: 'contain',
   },
 });

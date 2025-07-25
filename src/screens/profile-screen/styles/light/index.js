@@ -1,10 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
+export default StyleSheet.create({
   scroll: {
     padding: 24,
     paddingTop: 60,
@@ -52,7 +48,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
-  
 });
-
-export default styles;
