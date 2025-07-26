@@ -35,6 +35,7 @@ const SignUp = ({ navigation }) => {
 
     try {
       await AsyncStorage.setItem('user', JSON.stringify(userData));
+
       navigation.navigate('Welcome');
     } catch (error) {
       console.error('Kayıt hatası:', error);
@@ -93,14 +94,15 @@ const SignUp = ({ navigation }) => {
       />
 
       {/* Gizlilik Politikası */}
-      <View style={styles.privacyContainer}>
-        <Text style={styles.privacyText}>
-          {t('privacy_prefix')} <Text style={styles.privacyLink}>{t('privacy_policy')}</Text>
-        </Text>
-        <TouchableOpacity onPress={handleCheckboxToggle} style={styles.checkbox}>
-          {isChecked && <View style={styles.checkedBox} />}
-        </TouchableOpacity>
-      </View>
+     <View style={styles.privacyContainer}>
+  <TouchableOpacity onPress={handleCheckboxToggle} style={styles.checkbox}>
+    {isChecked && <View style={styles.checkedBox} />}
+  </TouchableOpacity>
+  <Text style={styles.privacyText}>
+    {t('privacy_prefix')}{' '}
+    <Text style={styles.privacyLink}>{t('privacy_policy')}</Text>
+  </Text>
+</View>
 
       <TouchableOpacity style={styles.getStartedButton} onPress={handleSignUp}>
         <Text style={styles.getStartedText}>{t('get_started')}</Text>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -10,10 +10,26 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import styles from './styles';
 import CustomButton from '../../../../components/Buttons/custom-button/index';
+import LanguageModal from '../../../../components/LanguageModal';
 
 const SignUpSignIn = () => {
   const navigation = useNavigation();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [languageModalVisible, setLanguageModalVisible] = useState(false);
+
+  const getCurrentLanguage = () => {
+    switch (i18n.language) {
+      case 'tr':
+        return require('../../../../assets/icon/flag-tr.png');
+      case 'de':
+        return require('../../../../assets/icon/flag-de.png');
+      case 'ru':
+        return require('../../../../assets/icon/flag-ru.png');
+      case 'en':
+      default:
+        return require('../../../../assets/icon/flag-en.png');
+    }
+  };
 
   return (
     <ImageBackground
@@ -37,6 +53,14 @@ const SignUpSignIn = () => {
         resizeMode="contain"
       />
 
+      {/* 🌐 Dil Seçme Butonu */}
+      <TouchableOpacity
+        onPress={() => setLanguageModalVisible(true)}
+        style={styles.languageButton}
+      >
+        <Image source={getCurrentLanguage()} style={styles.languageIcon} />
+      </TouchableOpacity>
+
       {/* Kayıt ol */}
       <CustomButton
         title={t('signUp')}
@@ -51,6 +75,12 @@ const SignUpSignIn = () => {
           {t('alreadyAccount')} <Text style={styles.loginLink}>{t('logIn')}</Text>
         </Text>
       </TouchableOpacity>
+
+      {/* 🌐 Modal */}
+      <LanguageModal
+        visible={languageModalVisible}
+        onClose={() => setLanguageModalVisible(false)}
+      />
     </ImageBackground>
   );
 };

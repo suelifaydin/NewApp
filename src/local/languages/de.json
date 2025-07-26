@@ -75,5 +75,9 @@
   "login_successful": "Anmeldung erfolgreich!",
   "incorrect_credentials": "Falsche E-Mail oder Passwort",
   "no_user_found": "Kein Benutzer gefunden, bitte registrieren",
-  "login_error": "Beim Anmelden ist ein Fehler aufgetreten"
+  "login_error": "Beim Anmelden ist ein Fehler aufgetreten",
+  "hi": "Hallo",
+  "welcome": "Willkommen",
+  "to_silent_moon": "bei Silent Moon",
+  "welcome_description": "Entdecke die App und finde inneren Frieden zur Vorbereitung auf die Meditation."
 }

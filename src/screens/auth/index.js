@@ -7,11 +7,13 @@ import {
   TouchableOpacity
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next'; // ✅ i18n çeviri
 import styles from './styles';
 import CustomButton from '../../components/Buttons/custom-button';
 
 const WelcomeScreen = ({ navigation }) => {
   const [userName, setUserName] = useState('');
+  const { t } = useTranslation(); // ✅ hook
 
   useEffect(() => {
     const getUserData = async () => {
@@ -39,28 +41,27 @@ const WelcomeScreen = ({ navigation }) => {
         style={styles.logo}
       />
 
-      <Text style={styles.title}>Hi {userName}, Welcome</Text>
-      <Text style={styles.subtitle}>to Silent Moon</Text>
-
-      <Text style={styles.description}>
-        Explore the app, Find some peace of mind to prepare for meditation.
+      <Text style={styles.title}>
+        {t('hi')}, {userName} {t('welcome')}
       </Text>
+      <Text style={styles.subtitle}>{t('to_silent_moon')}</Text>
+
+      <Text style={styles.description}>{t('welcome_description')}</Text>
 
       <Image
         source={require('../../assets/global/meditasyon.png')}
         style={styles.illustration}
       />
 
-    <CustomButton
-  title="GET STARTED"
-  onPress={() => navigation.navigate('Home', { screen: 'HomeScreen' })}
-  backgroundColor="#fff"
-  textColor="#3F414E"
-  buttonStyle={{ paddingVertical: 10, width: '90%' }} 
-/>
+      <CustomButton
+        title={t('get_started')}
+        onPress={() => navigation.navigate('Home', { screen: 'HomeScreen' })}
+        backgroundColor="#fff"
+        textColor="#3F414E"
+        buttonStyle={{ paddingVertical: 10, width: '90%' }}
+      />
     </ImageBackground>
-  
-);
+  );
 };
 
 export default WelcomeScreen;

@@ -41,6 +41,20 @@ const styles = StyleSheet.create({
     color: '#8E97FD',
     fontWeight: 'bold',
   },
+  languageButton: {
+  position: 'absolute',
+  top: 85,
+  right: 20,
+  padding: 5,
+  borderRadius: 20,
+  backgroundColor: 'hsla(253, 89%, 47%, 0.26)',
+},
+languageIcon: {
+  width: 35,
+  height: 22,
+  resizeMode: 'contain',
+},
+
 });
 
 export default styles;

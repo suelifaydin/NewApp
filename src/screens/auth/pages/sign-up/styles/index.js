@@ -82,15 +82,16 @@ backIcon: {
     fontSize: 16,
     color: '#000',
   },
-  privacyContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
+ privacyContainer: {
+  flexDirection: 'row-reverse', 
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+  marginVertical: 10,
+},
   privacyText: {
     marginLeft: 8,
     color: '#A1A4B2',
-    
+
   },
   privacyLink: {
     color: '#8E97FD',
@@ -107,21 +108,23 @@ backIcon: {
     fontWeight: 'bold',
     fontSize: 16,
   },
-  checkbox: {
-  width: 24,
-  height: 24,
-  borderWidth: 2,
-  borderColor: '#8E97FD',
+checkbox: {
+  width: 20,
+  height: 20,
   borderRadius: 4,
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginLeft: 131, // text ile arasında boşluk olsun
+  borderWidth: 1,
+  borderColor: '#ccc',
+  marginLeft: 52,
 },
+
 checkedBox: {
   width: 12,
   height: 12,
   backgroundColor: '#8E97FD',
   borderRadius: 2,
+  marginLeft: 3,
+  marginTop: 3,
 },
+
 
 });

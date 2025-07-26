@@ -61,7 +61,7 @@ const darkStyles = StyleSheet.create({
   },
   oceanCard: {
     height: 200,
-    width: 359,
+    width: 340,
     alignSelf: 'center',
     padding: 20,
     justifyContent: 'center',
@@ -112,12 +112,13 @@ const darkStyles = StyleSheet.create({
     marginTop: 20,
   },
  miniCard: {
-  width: '47%',         // %47 ile iki kart tam yan yana
-  marginBottom: 15,     // Alt boşluğu azaltıldı
+  width: 155,        
+  marginBottom: 50,
+  marginHorizontal: 1,     
 },
 miniCardImage: {
   width: '100%',
-  height: 100,          // Biraz daha kompakt hale getirildi
+  height: 100,         
   borderRadius: 15,
   resizeMode: 'cover',
   marginBottom: 5,

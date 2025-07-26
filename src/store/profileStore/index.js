@@ -20,12 +20,12 @@ class ProfileStore {
     this.loadInitialData();
   }
 
-  // 🔸 Kullanıcı bilgileri
-  setUser(user) {
-    this.name = user.name;
-    this.surname = user.surname;
-    this.email = user.email;
-  }
+setUser(user) {
+  this.name = user.name;
+  this.surname = user.surname;
+  this.email = user.email;
+}
+
 
   // 🔸 Tema
   setTheme(theme) {

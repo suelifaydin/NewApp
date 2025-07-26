@@ -32,6 +32,13 @@ export default StyleSheet.create({
   illustration: {
     width: width * 0.75,
     height: height * 0.45,
-    marginBottom: 360,
+    marginBottom: 275,
   },
+  loadingContainer: {
+  flex: 1,
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  paddingBottom: 30,
+},
+
 });

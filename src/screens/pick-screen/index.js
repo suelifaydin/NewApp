@@ -7,7 +7,7 @@ import {
   Image,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import { useTranslation } from 'react-i18next'; // ✅ bu satır kalmalı
+import { useTranslation } from 'react-i18next'; 
 
 import * as pickStyles from './styles';
 import { getTheme } from '../../utils/theme/theme';

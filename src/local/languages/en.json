@@ -76,5 +76,9 @@
   "incorrect_credentials": "Incorrect email or password",
   "no_user_found": "No user found, please sign up first",
   "login_error": "An error occurred during login",
-  "continue_with_facebook": "CONTINUE WITH FACEBOOK"
+  "continue_with_facebook": "CONTINUE WITH FACEBOOK",
+   "hi": "Hi",
+  "welcome": "Welcome",
+  "to_silent_moon": "to Silent Moon",
+  "welcome_description": "Explore the app, Find some peace of mind to prepare for meditation."
 }

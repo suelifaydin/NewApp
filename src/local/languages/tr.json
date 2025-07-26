@@ -75,5 +75,9 @@
   "incorrect_credentials": "E-posta veya şifre yanlış",
   "no_user_found": "Kayıtlı kullanıcı bulunamadı, lütfen kayıt olun",
   "login_error": "Giriş sırasında bir hata oluştu",
-  "continue_with_facebook": "FACEBOOK İLE DEVAM ET"
+  "continue_with_facebook": "FACEBOOK İLE DEVAM ET",
+   "hi": "Merhaba",
+  "welcome": "Hoş geldin",
+  "to_silent_moon": "Silent Moon'a",
+  "welcome_description": "Uygulamayı keşfet, meditasyona hazırlanmak için biraz huzur bul."
 }

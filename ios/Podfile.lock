@@ -1193,6 +1193,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNSVG (15.12.0):
+    - React-Core
   - SocketRocket (0.7.0)
   - SwiftAudioEx (1.1.0)
   - Yoga (0.0.0)
@@ -1257,6 +1259,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1380,6 +1383,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1441,6 +1446,7 @@ SPEC CHECKSUMS:
   ReactCommon: 9ed4522c478fc82fd9822fd2be960875fccb2c45
   RNCAsyncStorage: 23e56519cc41d3bade3c8d4479f7760cb1c11996
   RNScreens: ad1ff35a779546149e67de4edada7b320d77e8f1
+  RNSVG: d956b40703d2292f808d57c9ee5452c46ac6b4b1
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   SwiftAudioEx: f6aa653770f3a0d3851edaf8d834a30aee4a7646
   Yoga: 272dddd3c0e1e23d09ba81ed55ddfa7fdd3caa17

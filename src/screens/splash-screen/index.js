@@ -37,11 +37,9 @@ const SplashScreen = () => {
         />
 
         {/* Yükleniyor göstergesi */}
-        <ActivityIndicator
-          size="large"
-          color="red"
-          style={{ marginTop: 40 }}
-        />
+        <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 50 }}>
+          <ActivityIndicator size="large" color="#A584FF" />
+        </View>
       </View>
     </ImageBackground>
   );

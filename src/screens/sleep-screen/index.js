@@ -112,8 +112,6 @@ const SleepScreen = observer(() => {
   </View>
 )}
 
-
-        
       </ScrollView>
     </ImageBackground>
   );
