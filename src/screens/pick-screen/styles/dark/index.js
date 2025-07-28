@@ -26,13 +26,21 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   cards: {
-    paddingHorizontal: 24,
-    paddingBottom: 30,
+    paddingHorizontal: 20,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+    row1: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 16,
+  },
+    row2: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   image: {
     width: '48%',

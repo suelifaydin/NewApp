@@ -10,9 +10,10 @@ import {
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { observer } from 'mobx-react';
 import profileStore from '../../store/profileStore';
-import lightStyles from './styles/light';
-import darkStyles from './styles/dark';
+import lightStyles from './styles/light/light';
+import darkStyles from './styles/dark/dark';
 import { getTheme } from '../../utils/theme/theme';
+
 
 
 

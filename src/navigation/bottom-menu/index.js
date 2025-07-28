@@ -48,10 +48,11 @@ const TabNavigator = () => {
             style={{
               backgroundColor: focused ? '#8E97FD' : 'transparent',
               borderRadius: 15,
-              width: 35,
-              height: 35,
+              width: 39,
+              height: 40,
               justifyContent: 'center',
               alignItems: 'center',
+              marginBottom: 15, 
             }}
           >
             <Image

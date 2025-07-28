@@ -116,4 +116,4 @@ setUser(user) {
 }
 
 const profileStore = new ProfileStore();
-export default profileStore;
+export default profileStore; 

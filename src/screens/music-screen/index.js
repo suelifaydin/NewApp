@@ -14,8 +14,6 @@ import TrackPlayer, {
 } from 'react-native-track-player';
 
 import { useFocusEffect } from '@react-navigation/native';
-import lightStyles from './styles/light/index';
-import darkStyles from './styles/dark/index';
 import { getTheme } from '../../utils/theme/theme';
 import { setupPlayer } from '../../utils/audio/setupPlayer';
 import profileStore from '../../store/profileStore';

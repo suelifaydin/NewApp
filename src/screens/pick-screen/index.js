@@ -1,36 +1,20 @@
-import React, { useState, useCallback } from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  ScrollView,
-  Image,
-} from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
-import { useTranslation } from 'react-i18next'; 
+import React from 'react';
+import { View, Text, ImageBackground, ScrollView, Image } from 'react-native';
+import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18next';
 
 import * as pickStyles from './styles';
-import { getTheme } from '../../utils/theme/theme';
+import { useAppStyles } from '../../hooks'; // ✅ doğru hook
+
 
 const PickScreen = () => {
-const [theme, setTheme] = useState('light');
-const { t } = useTranslation();
+  const styles = useAppStyles(pickStyles);
+  console.log('stylesefe', styles);
 
-  useFocusEffect(
-    useCallback(() => {
-      const loadTheme = async () => {
-        const savedTheme = await getTheme();
-        console.log('Aktif tema:', savedTheme);
-        setTheme(savedTheme);
-      };
-      loadTheme();
-    }, [])
-  );
-
-  const styles = pickStyles[theme]; // ✅ styles.dark ya da styles.light
+  const { t } = useTranslation();
 
   const backgroundImage =
-    theme === 'dark'
+    styles === 'dark'
       ? require('../../assets/global/sleep.png')
       : require('../../assets/global/bg.png');
 
@@ -38,14 +22,14 @@ const { t } = useTranslation();
     <ImageBackground
       source={backgroundImage}
       style={styles.container}
-      key={theme}
+      key={styles}
       resizeMode="cover"
     >
-       <View style={styles.header}>
-    <Text style={styles.title}>{t('pickTitle1')}</Text>
-    <Text style={styles.subtitle}>{t('pickTitle2')}</Text>
-    <Text style={styles.caption}>{t('pickSubtitle')}</Text>
-  </View>
+      <View style={styles.header}>
+        <Text style={styles.title}>{t('pickTitle1')}</Text>
+        <Text style={styles.subtitle}>{t('pickTitle2')}</Text>
+        <Text style={styles.caption}>{t('pickSubtitle')}</Text>
+      </View>
 
       <ScrollView contentContainerStyle={styles.cards}>
         <View style={styles.row}>
@@ -59,7 +43,7 @@ const { t } = useTranslation();
           />
         </View>
 
-        <View style={styles.row}>
+        <View style={styles.row1}>
           <Image
             source={require('../../assets/pick-screen/sleep3.png')}
             style={[styles.image, { height: 160 }]}
@@ -70,7 +54,7 @@ const { t } = useTranslation();
           />
         </View>
 
-        <View style={styles.row}>
+        <View style={styles.row2}>
           <Image
             source={require('../../assets/pick-screen/growth.png')}
             style={[styles.image, { height: 180 }]}
@@ -85,4 +69,4 @@ const { t } = useTranslation();
   );
 };
 
-export default PickScreen;
+export default observer(PickScreen);

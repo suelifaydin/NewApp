@@ -10,9 +10,8 @@ import {
 } from 'react-native';
 import { observer } from 'mobx-react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import profileStore from '../../store/profileStore';
-import * as profileStyles from './styles'; // ✅ Tema stilleri
+import * as profileStyles from './styles'; // Tema stilleri
 import LanguageModal from '../../components/LanguageModal';
 import { useTranslation } from 'react-i18next';
 

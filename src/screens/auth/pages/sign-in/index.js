@@ -70,14 +70,14 @@ const LoginScreen = ({ navigation }) => {
       <Text style={styles.title}>{t('welcome_back')}</Text>
 
       {/* Facebook */}
-<TouchableOpacity style={styles.facebookButton}>
-  <Image
-    source={require('../../../../assets/icon/facebook.png')}
-    style={styles.icon2}
-  />
-  <Text style={styles.facebookText}>{t('continue_with_facebook')}</Text>
-</TouchableOpacity>
-
+      <TouchableOpacity style={styles.facebookButton}>
+        <Image
+          source={require('../../../../assets/icon/facebook.png')}
+          resizeMode='contain'
+          style={styles.icon2}
+        />
+        <Text style={styles.facebookText}>{t('continue_with_facebook')}</Text>
+      </TouchableOpacity>
 
       {/* Google */}
       <TouchableOpacity style={styles.googleButton}>

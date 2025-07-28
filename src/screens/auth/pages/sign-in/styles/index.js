@@ -59,6 +59,7 @@ backIcon: {
     width: 20,
     height: 20,
     marginRight: 12,
+    
   },
   googleText: {
     color: '#3F414E',

@@ -19,6 +19,7 @@ const RelatedScreen = () => {
   const [theme, setTheme] = useState('light');
   const { t } = useTranslation();
 
+
   useFocusEffect(
     useCallback(() => {
       const loadTheme = async () => {
