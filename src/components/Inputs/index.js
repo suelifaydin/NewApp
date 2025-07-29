@@ -24,7 +24,7 @@ const Input = ({
 
       {showCheckIcon && (
         <Image
-          source={require('../../assets/icon/check.png')}
+          source={require('../../assets/icons/auth-screen/check.png')}
           style={styles.icon}
         />
       )}
@@ -32,7 +32,7 @@ const Input = ({
       {showPasswordToggle && (
         <TouchableOpacity onPress={onTogglePassword}>
           <Image
-            source={require('../../assets/icon/eye.png')}
+            source={require('../../assets/icons/auth-screen/eye.png')}
             style={styles.icon}
           />
         </TouchableOpacity>
@@ -46,14 +46,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#F5F5F5',
-    borderRadius: 10,
+    borderRadius: 15,
     paddingHorizontal: 16,
-    marginBottom: 12,
+    marginBottom: 15,
   },
   input: {
     flex: 1,
     fontSize: 16,
-    paddingVertical: 14,
+    paddingVertical: 20,
     color: '#000',
   },
   icon: {

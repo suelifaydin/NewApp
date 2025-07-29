@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../local/i18n';
+import i18n from '../../localization/i18n';
 
 const LanguageModal = ({ visible, onClose }) => {
   const { t } = useTranslation();
@@ -27,25 +27,25 @@ const LanguageModal = ({ visible, onClose }) => {
           {/* English */}
           <TouchableOpacity onPress={() => changeLanguage('en')} style={styles.optionRow}>
             <Text style={styles.option}>{t('english')}</Text>
-            <Image source={require('../../assets/icon/flag-en.png')} style={styles.flag} />
+            <Image source={require('../../assets/images/flag/flag-en.png')} style={styles.flag} />
           </TouchableOpacity>
 
           {/* Turkish */}
           <TouchableOpacity onPress={() => changeLanguage('tr')} style={styles.optionRow}>
             <Text style={styles.option}>{t('turkish')}</Text>
-            <Image source={require('../../assets/icon/flag-tr.png')} style={styles.flag} />
+            <Image source={require('../../assets/images/flag/flag-tr.png')} style={styles.flag} />
           </TouchableOpacity>
 
           {/* German */}
           <TouchableOpacity onPress={() => changeLanguage('de')} style={styles.optionRow}>
             <Text style={styles.option}>{t('german')}</Text>
-            <Image source={require('../../assets/icon/flag-de.png')} style={styles.flag} />
+            <Image source={require('../../assets/images/flag/flag-de.png')} style={styles.flag} />
           </TouchableOpacity>
 
           {/* Russian */}
           <TouchableOpacity onPress={() => changeLanguage('ru')} style={styles.optionRow}>
             <Text style={styles.option}>{t('russian')}</Text>
-            <Image source={require('../../assets/icon/flag-ru.png')} style={styles.flag} />
+            <Image source={require('../../assets/images/flag/flag-ru.png')} style={styles.flag} />
           </TouchableOpacity>
 
           {/* Close */}

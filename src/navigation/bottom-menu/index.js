@@ -3,11 +3,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import HomeScreen from '../../screens/home-screen';
-import SleepScreen from '../../screens/sleep-screen';
-import MusicScreen from '../../screens/music-screen';
-import ProfileScreen from '../../screens/profile-screen';
-import PickScreen from '../../screens/pick-screen';
+import {
+  HomeScreen,
+  SleepScreen,
+  PlayerScreen,
+  ProfileScreen,
+  PickScreen, 
+} from '../../features/index'; // Adjust the import paths as necessary
 
 const Tab = createBottomTabNavigator();
 
@@ -15,11 +17,11 @@ const TabNavigator = () => {
   const { t } = useTranslation();
 
   const tabIcons = {
-    HomeScreen: require('../../assets/icon/home.png'),
-    Sleep: require('../../assets/buttom-menu/sleep1.png'),
-    MusicScreen: require('../../assets/icon/music1.png'),
-    Profile: require('../../assets/buttom-menu/profile.png'),
-    PickScreen: require('../../assets/buttom-menu/pick.png'),
+    HomeScreen: require('../../assets/icons/buttom-menu/home.png'),
+    Sleep: require('../../assets/icons/buttom-menu/sleep1.png'),
+    MusicScreen: require('../../assets/icons/buttom-menu/music1.png'),
+    Profile: require('../../assets/icons/buttom-menu/profile.png'),
+    PickScreen: require('../../assets/icons/buttom-menu/pick.png'),
   };
 
   return (
@@ -28,8 +30,8 @@ const TabNavigator = () => {
         headerShown: false,
         tabBarShowLabel: true,
         tabBarStyle: {
-          paddingTop: 10,
-          height: 85,
+          paddingTop: 18,
+          height: 90,
           paddingBottom: 10,
           backgroundColor: '#03174D',
           borderTopLeftRadius: 24,
@@ -77,7 +79,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="MusicScreen"
-        component={MusicScreen}
+        component={PlayerScreen}
         options={{ tabBarLabel: t('music') }}
       />
       <Tab.Screen
